@@ -1,6 +1,6 @@
-# DHCP GUI Server
+# DHCP Mini Server
 
-Графический интерфейс для запуска мини-DHCP сервера на Linux. Написан на Python с использованием PySide6 и Scapy.
+GUI и CLI инструменты для запуска мини-DHCP сервера на Linux. Написано на Python с использованием PySide6/Scapy.
 
 ## Возможности
 
@@ -9,7 +9,7 @@
 - Сохранение конфигурации между запусками (файл `dhcp_config.json`)
 - Защита от запуска на системных интерфейсах (с default route, IP, в бридже, WiFi)
 - Логирование DHCP пакетов (DISCOVER, REQUEST, ACK, NAK)
-- Тёмная тема (QSS)
+- Тёмная тема (QSS) для GUI
 
 ## Требования
 
@@ -17,15 +17,15 @@
 - Python 3.8+
 - Установленные пакеты:
   - `scapy`
-  - `PySide6`
-  - `qtawesome`
+  - `PySide6` (только для GUI)
+  - `qtawesome` (только для GUI)
 
 ## Установка
 
 ```bash
 # Клонирование
-git clone <repo-url>
-cd DHCP
+git clone https://github.com/Voldrix-dev/DHCP-mini.git
+cd DHCP-mini
 
 # Установка зависимостей (в виртуальное окружение)
 python3 -m venv dhcpenv
@@ -36,7 +36,7 @@ pip install scapy PySide6 qtawesome
 sudo pip install scapy PySide6 qtawesome
 ```
 
-## Запуск
+## Запуск GUI
 
 ```bash
 # Через sudo (нужно для настройки интерфейсов)
@@ -46,7 +46,7 @@ sudo dhcpenv/bin/python dhcp_gui.py
 sudo ./run_gui.sh
 ```
 
-## Использование
+### Использование GUI
 
 1. Выберите сетевой интерфейс (системные скрыты автоматически)
 2. Настройте параметры:
@@ -57,16 +57,44 @@ sudo ./run_gui.sh
 3. Нажмите **Запустить**
 4. Подключите клиент к этому интерфейсу — он получит IP по DHCP
 
+## Запуск CLI
+
+```bash
+# Показать доступные интерфейсы
+sudo python3 dhcp_server_cli.py --list-interfaces
+
+# Запуск с автовыбором интерфейса
+sudo python3 dhcp_server_cli.py
+
+# Запуск с явными параметрами
+sudo python3 dhcp_server_cli.py -i enp1s0f0 -s 10.0.0.1 -a 10.0.0.100 -m 255.255.255.0 -l 300
+
+# Справка
+python3 dhcp_server_cli.py --help
+```
+
+### Аргументы CLI
+
+| Аргумент | Описание | По умолчанию |
+|----------|----------|--------------|
+| `-i`, `--interface` | Сетевой интерфейс | первый доступный |
+| `-s`, `--server-ip` | IP адрес сервера | `15.15.15.1` |
+| `-a`, `--assigned-ip` | IP адрес для выдачи клиенту | `15.15.15.15` |
+| `-m`, `--subnet-mask` | Маска подсети | `255.255.255.0` |
+| `-l`, `--lease-time` | Время аренды (сек) | `60` |
+| `--list-interfaces` | Показать интерфейсы и выйти | — |
+
 ## Структура проекта
 
 ```
-DHCP/
+DHCP-mini/
 ├── dhcp_gui.py           # Основной GUI приложение
+├── dhcp_server_cli.py    # CLI версия сервера
 ├── style.qss             # Стили (тёмная тема)
 ├── dhcp_1.svg            # Иконка приложения
 ├── dhcp_2.svg            # Альтернативная иконка
 ├── create_desktop.sh     # Создание .desktop файла
-├── run_gui.sh            # Скрипт запуска
+├── run_gui.sh            # Скрипт запуска GUI
 ├── dhcp_config.json      # Сохранённая конфигурация (создаётся автоматически)
 └── .gitignore
 ```
