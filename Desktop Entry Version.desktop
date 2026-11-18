@@ -1,0 +1,34 @@
+нужно проверять что у нас стоит на Ubuntu
+pcuser@pcuser:~$ echo "DISPLAY=$DISPLAY"
+echo "XAUTHORITY=$XAUTHORITY"
+echo "XDG_SESSION_TYPE=$XDG_SESSION_TYPE"
+echo "XDG_RUNTIME_DIR=$XDG_RUNTIME_DIR"
+DISPLAY=:0
+XAUTHORITY=/run/user/1000/.mutter-Xwaylandauth.1TIUU3
+XDG_SESSION_TYPE=wayland
+XDG_RUNTIME_DIR=/run/user/1000
+
+
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=DHCP Server
+Comment=Управление локальным DHCP-сервером
+Exec=pkexec /home/pcuser/Mac_Flash_QR_To_Sheets/DHCP/run_gui_pkexec.sh
+Icon=/home/pcuser/Mac_Flash_QR_To_Sheets/DHCP/dhcp_2.svg
+Terminal=false
+Categories=Network;System;
+StartupNotify=true
+
+run_gui_pkexec.sh
+#!/bin/bash
+
+SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
+
+export DISPLAY=:0
+export XAUTHORITY=/run/user/1000/.mutter-Xwaylandauth.1TIUU3
+export XDG_RUNTIME_DIR=/run/user/1000
+export WAYLAND_DISPLAY=wayland-0
+
+exec "$SCRIPT_DIR/dhcpenv/bin/python" "$SCRIPT_DIR/dhcp_gui.py"
+

@@ -1,0 +1,186 @@
+QMainWindow {
+    background-color: #1e1e2e;
+}
+
+QLabel {
+    color: #cdd6f4;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    font-size: 13px;
+}
+
+QLabel#TitleLabel {
+    font-size: 20px;
+    font-weight: bold;
+    color: #f5c2e7;
+    margin-bottom: 5px;
+}
+
+QGroupBox {
+    background-color: #181825;
+    border: 1px solid #313244;
+    border-radius: 8px;
+    color: #bac2de;
+    font-weight: bold;
+    margin-top: 10px;
+    padding-top: 15px;
+}
+
+QGroupBox::title {
+    subcontrol-origin: margin;
+    subcontrol-position: top left;
+    left: 15px;
+    padding: 0 5px;
+}
+
+
+QLineEdit, QComboBox {
+    background-color: #313244;
+    color: #cdd6f4;
+    border: 1px solid #45475a;
+    border-radius: 6px;
+    padding: 6px 12px;
+    font-size: 13px;
+}
+
+QLineEdit:focus, QComboBox:focus {
+    border: 1px solid #cba6f7;
+}
+
+QComboBox::drop-down {
+    subcontrol-origin: padding;
+    subcontrol-position: top right;
+    width: 25px;
+    border-left: 0px;
+}
+
+/* Стилизация выпадающего списка QComboBox */
+QComboBox QAbstractItemView {
+    background-color: #181825;
+    color: #cdd6f4;
+    border: 1px solid #45475a;
+    selection-background-color: #313244;
+    selection-color: #cba6f7;
+    outline: none;
+    padding: 4px;
+}
+
+QTextEdit#LogPanel {
+    background-color: #11111b;
+    border: 1px solid #313244;
+    border-radius: 8px;
+    font-family: 'Consolas', 'Courier New', monospace;
+    font-size: 12px;
+    padding: 10px;
+    color: #cdd6f4;
+}
+
+QPushButton {
+    color: #11111b;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    font-weight: bold;
+    font-size: 13px;
+    border: none;
+    border-radius: 6px;
+    padding: 8px 16px;
+    background-color: #cba6f7;
+}
+
+QPushButton:hover {
+    background-color: #f5c2e7;
+}
+
+QPushButton:disabled {
+    background-color: #45475a;
+    color: #7f849c;
+}
+
+QPushButton#StartButton {
+    background-color: #a6e3a1;
+}
+QPushButton#StartButton:hover {
+    background-color: #94e2d5;
+}
+
+QPushButton#StopButton {
+    background-color: #f38ba8;
+}
+QPushButton#StopButton:hover {
+    background-color: #eba0ac;
+}
+
+QPushButton#SecondaryButton {
+    background-color: #89b4fa;
+}
+QPushButton#SecondaryButton:hover {
+    background-color: #74c7ec;
+}
+
+QFrame#StatusFrame {
+    background-color: #181825;
+    border: 1px solid #313244;
+    border-radius: 6px;
+}
+
+/* === Стилизация скроллбара === */
+
+QScrollBar:vertical {
+    background-color: #181825;
+    width: 10px;
+    margin: 0px;
+    border-radius: 5px;
+}
+
+QScrollBar::handle:vertical {
+    background-color: #45475a;
+    min-height: 30px;
+    border-radius: 5px;
+}
+
+QScrollBar::handle:vertical:hover {
+    background-color: #cba6f7;
+}
+
+QScrollBar::handle:vertical:pressed {
+    background-color: #a6adc8;
+}
+
+QScrollBar::add-line:vertical,
+QScrollBar::sub-line:vertical {
+    height: 0px;
+}
+
+QScrollBar::add-page:vertical,
+QScrollBar::sub-page:vertical {
+    background: none;
+}
+
+QScrollBar:horizontal {
+    background-color: #181825;
+    height: 10px;
+    margin: 0px;
+    border-radius: 5px;
+}
+
+QScrollBar::handle:horizontal {
+    background-color: #45475a;
+    min-width: 30px;
+    border-radius: 5px;
+}
+
+QScrollBar::handle:horizontal:hover {
+    background-color: #cba6f7;
+}
+
+QScrollBar::handle:horizontal:pressed {
+    background-color: #a6adc8;
+}
+
+QScrollBar::add-line:horizontal,
+QScrollBar::sub-line:horizontal {
+    width: 0px;
+}
+
+QScrollBar::add-page:horizontal,
+QScrollBar::sub-page:horizontal {
+    background: none;
+}
